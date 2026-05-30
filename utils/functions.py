@@ -11,7 +11,7 @@ load_dotenv()
 os.environ['KAGGLE_USERNAME'] = os.getenv('KAGGLE_USERNAME')
 os.environ['KAGGLE_KEY'] = os.getenv('KAGGLE_API_TOKEN')
 
-file_path = 'data/'
+file_path = 'data/raw/'
 
 
 def downloadDataSet(repo, file):
@@ -60,4 +60,4 @@ csv_path = downloadDataSet('namespaiva', 'base-varejo')
 
 cleanDirectory()
 
-df = pd.read_csv(csv_path)
+df = pd.read_csv(csv_path, sep=';')

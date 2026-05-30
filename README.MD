@@ -164,15 +164,13 @@ Para a importação da base de dados, pode-se efetuar de duas formas:
 
 1. Download dos arquivos via API onde deve-se proceder da seguinte maneira:
     - Para que seja possível utilizar a API do Kaggle, é necessário que você já possua uma conta no site.
-    - Após ter uma conta válida, com acesso à API, deve-se inderir as informações no arquivo `.env` localizado na raiz do projeto.
+    - Após ter uma conta válida, com acesso à API, deve-se inderir as informações no arquivo `.env` que deve ficar localizado na raiz do projeto.
     - Caso seja utilizada a API da Kaggle para o download do arquivo base, antes de executar o script do projeto, no terminal deve-se executar o comando `kaggle auth login`. Será soolicitado que você se autentique na plataforma Kaggle 
 
 1. Dowlnoad manual do arquivo base.
-    - Adicionar o arquivo .csv ao diretório `data`, que é o local onde o script irá procurar o arquivo para leitura e posterior tratamentos
+    - Adicionar o arquivo .csv ao diretório `data/raw`, que é o local onde o script irá procurar o arquivo para leitura e posterior tratamentos
 
 #### Executção do projeto
 Para executar o script que dará início ao tratamento dos dados, na raiz do projeto, deve-se executar no terminal o comando `python -m notebooks.exploratory_analysis` 
 
-no git hub :  1 readme com o nome + turma , explicação do projeto, conclusões e insights
-1 repositório com 1 pasta com os arquivos raw e limpos
-1 pasta com o arquivo .py ou ipynb
+

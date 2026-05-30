@@ -1,3 +1,9 @@
 venv/*
 .env
 __pycache__
+data/**/*.csv
+
+
+/* no git hub :  1 readme com o nome + turma , explicação do projeto, conclusões e insights
+1 repositório com 1 pasta com os arquivos raw e limpos
+1 pasta com o arquivo .py ou ipynb */
