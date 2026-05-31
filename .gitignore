@@ -1,6 +1,8 @@
 venv/*
 .env
 __pycache__
+data/processed/*
+data/raw/*
 
 
 /* no git hub :  1 readme com o nome + turma , explicação do projeto, conclusões e insights
