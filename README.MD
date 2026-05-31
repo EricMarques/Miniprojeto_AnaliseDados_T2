@@ -457,7 +457,7 @@ Com relação de compras de gêneros X estado civil, obtivemos os seguintes resu
         <td>6</td>
         <td>Masculino</td>
         <td>Casado ou União Estável</td>
-        <td>95094</td>
+        <td>104627</td>
     </tr>
     <tr>
         <td>7</td>
@@ -681,3 +681,26 @@ A média de itens por compra foi de `44.94`
     </tr>
   </tbody>
 </table>
+
+
+### Conclusões
+- A base apresentou boa qualidade de dados, sem registros nulos nas colunas relevantes para a análise.
+- Foram removidas quatro colunas totalmente vazias por não agregarem valor analítico.
+- As linhas duplicadas foram mantidas, pois podem representar múltiplas unidades do mesmo produto em uma compra.
+- Houve leve predominância de compras realizadas por clientes do gênero feminino.
+- Clientes solteiros e separados concentraram os maiores volumes de compras.
+- A média observada foi de 1.15 filhos por cliente, indicando predominância de famílias pequenas.
+- Cada compra apresentou, em média, 44.94 itens.
+- As classes econômicas A, B e C apresentaram comportamento de compra muito semelhante.
+- O produto "Presunto Cozido" foi o item mais comprado em todos os estados civis analisados.
+- Os resultados permitiram identificar padrões de consumo e segmentação relevantes para futuras análises de negócio.
+
+### Sugestões para Análises Futuras
+- Analisar a sazonalidade das vendas por mês, trimestre ou período do ano.
+- Identificar os produtos mais vendidos por classe econômica.
+- Avaliar a relação entre quantidade de filhos e volume de compras.
+- Comparar o comportamento de compra entre gêneros para cada categoria de produto.
+- Identificar categorias de produtos preferidas por cada estado civil.
+- Avaliar a fidelidade dos clientes por meio da frequência de compras.
+- Analisar a participação de cada categoria de produto no volume total de vendas.
+- Avaliar a concentração das vendas por cliente, produto ou categoria.
