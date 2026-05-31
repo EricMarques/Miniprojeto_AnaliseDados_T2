@@ -60,4 +60,4 @@ csv_path = downloadDataSet('namespaiva', 'base-varejo')
 
 cleanDirectory()
 
-df = pd.read_csv(csv_path, sep=';')
+df = pd.read_csv(csv_path, sep=';', encoding='latin-1')

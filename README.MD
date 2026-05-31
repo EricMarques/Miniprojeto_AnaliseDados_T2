@@ -171,6 +171,309 @@ Para a importação da base de dados, pode-se efetuar de duas formas:
     - Adicionar o arquivo .csv ao diretório `data/raw`, que é o local onde o script irá procurar o arquivo para leitura e posterior tratamentos
 
 #### Executção do projeto
-Para executar o script que dará início ao tratamento dos dados, na raiz do projeto, deve-se executar no terminal o comando `python -m notebooks.exploratory_analysis` 
+Primeiramente deve-se instalar as dependências utilizando o comando `pip install requirements.txt`
+Para executar o script que dará início ao tratamento dos dados, na raiz do projeto, deve-se executar no terminal o comando `python -m main` 
+
+### Tecnologias utilizadas
+- Python
+- Pandas
+
+### Limpeza de Dados
+Para a limpeza dos dados foram efetuados os seguintes procedimentos:
+
+- Remoção de colunas totalmente vazias (Unnamed: 10 - 13);
+- Identificação e remoção de registros duplicados;
+- Limpeza de linhas onde as colunas PR_CAT e PR_NOME possuíam valor #N/D
+- Conversão das informações da coluna `data` de string para date.
+- Padronização dos textos das colunas PR_CAT e PR_NOME pata str.title
 
 
+## Análise Exploratória doas dados da base `Base Varejo`
+
+O foco desta análise é identificar possíveis anomalias nos dados, efetuar tratamento  e limpeza destes dados inconsistentes.
+
+A base de dados refere-se a uma relação de compras efetuadas por clientes.
+
+### Análises Exploratórias:
+#### Filhos `CL_FHL`
+A coluna CL_FHL representa a coluna onde informa a quantidade de filhos onde cada comprador informo possuir.
+
+Tendo os seguintres números:
+- Média de 1,15 filhos por compra/cliente
+- Quantidade mínima de 0 e mácima de 4 filhos
+
+#### Compras
+Analisado o quesito de por gênero `CL_GENERO`, onde a referida coluna representa a informação de gênero(M/F) informados por compra, onde obteve-se os seguintes resultados:
+- Feminino: 380735
+- Masculino: 349484
+
+Com relação às compras de gêneros X estado civil, obtivemos os seguintes resultados:
+
+<table>
+  <thead>
+    <tr>
+        <th>Nº</th>
+        <th>Gênero</th>
+        <th>Estado Civil</th>
+        <th>Quantidade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>1</td>
+        <td>Feminino</td>
+        <td>Casado ou União Estável</td>
+        <td>79298</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Feminino</td>
+        <td>Divorciado</td>
+        <td>87869</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Feminino.</td>
+        <td>Separado</td>
+        <td>100255</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Feminino</td>
+        <td>Solteiro</td>
+        <td>99579</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Feminino</td>
+        <td>Viúvo</td>
+        <td>13734</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Masculino</td>
+        <td>Casado ou União Estável</td>
+        <td>91946</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>Masculino</td>
+        <td>Divorciado</td>
+        <td>83611</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>Masculino</td>
+        <td>Separado</td>
+        <td>87983</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>Masculino</td>
+        <td>Solteiro</td>
+        <td>78851</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>Masculino</td>
+        <td>Viúvo</td>
+        <td>7093</td>
+    </tr>
+  </tbody>
+</table>
+
+A média de itens por copora foi de `39,54`
+
+#### Top 5 itens mais comprados por estado civil.
+
+<table>
+  <thead>
+    <tr>
+      <th>Nº</th>
+      <th>Estado Civil</th>
+      <th>Produto</th>
+      <th>Quantidade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Casado ou União Estável</td>
+      <td>Presunto Cozido</td>
+      <td>2938</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Casado ou União Estável</td>
+      <td>Preservativo</td>
+      <td>1605</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Casado ou União Estável</td>
+      <td>Cebola</td>
+      <td>1589</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Casado ou União Estável</td>
+      <td>Sardinha</td>
+      <td>1582</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Casado ou União Estável</td>
+      <td>Papel Higiênico</td>
+      <td>1566</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Divorciado</td>
+      <td>Presunto Cozido</td>
+      <td>2956</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Divorciado</td>
+      <td>Cebola</td>
+      <td>1579</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Divorciado</td>
+      <td>Removedor</td>
+      <td>1568</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Divorciado</td>
+      <td>Papel Higiênico</td>
+      <td>1567</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Divorciado</td>
+      <td>Desengordurante</td>
+      <td>1559</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Separado</td>
+      <td>Presunto Cozido</td>
+      <td>3369</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Separado</td>
+      <td>Modelador</td>
+      <td>1727</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Separado</td>
+      <td>Chupeta</td>
+      <td>1717</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Separado</td>
+      <td>Leite</td>
+      <td>1712</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Separado</td>
+      <td>Tira Mancha</td>
+      <td>1710</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Solteiro</td>
+      <td>Presunto Cozido</td>
+      <td>3104</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Solteiro</td>
+      <td>Detergente</td>
+      <td>1657</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Solteiro</td>
+      <td>Papinha Infantil</td>
+      <td>1654</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Solteiro</td>
+      <td>Banana</td>
+      <td>1642</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Solteiro</td>
+      <td>Mamão</td>
+      <td>1636</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Viúvo</td>
+      <td>Presunto Cozido</td>
+      <td>352</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Viúvo</td>
+      <td>Lustra Móveis</td>
+      <td>208</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Viúvo</td>
+      <td>Manga</td>
+      <td>208</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>Viúvo</td>
+      <td>Rodo</td>
+      <td>205</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>Viúvo</td>
+      <td>Shampoo</td>
+      <td>205</td>
+    </tr>
+  </tbody>
+</table>
+
+#### Média de itens por classe social.
+
+<table>
+  <thead>
+    <tr>
+      <th>Nº</th>
+      <th>Classe Econômica</th>
+      <th>Média de Itens por Compra</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>A</td>
+      <td>39.82</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>C</td>
+      <td>39.79</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>B</td>
+      <td>39.39</td>
+    </tr>
+  </tbody>
+</table>
