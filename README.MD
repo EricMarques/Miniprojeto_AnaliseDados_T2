@@ -158,6 +158,10 @@ Serão desconsiderados e atribuída a nota 0 (zero) os projetos que apresentarem
 
 
 ### 6. Execussão do projeto
+### Tecnologias utilizadas
+- Python
+- Pandas
+
 #### Importação da base de dados
 
 Para a importação da base de dados, pode-se efetuar de duas formas:
@@ -165,18 +169,15 @@ Para a importação da base de dados, pode-se efetuar de duas formas:
 1. Download dos arquivos via API onde deve-se proceder da seguinte maneira:
     - Para que seja possível utilizar a API do Kaggle, é necessário que você já possua uma conta no site.
     - Após ter uma conta válida, com acesso à API, deve-se inderir as informações no arquivo `.env` que deve ficar localizado na raiz do projeto.
+    - Também deve-se alterar as variáveis `repo` e `dataset` localizadas no arquivo `functions.py` localizado dentro de `utils`
     - Caso seja utilizada a API da Kaggle para o download do arquivo base, antes de executar o script do projeto, no terminal deve-se executar o comando `kaggle auth login`. Será soolicitado que você se autentique na plataforma Kaggle 
 
 1. Dowlnoad manual do arquivo base.
     - Adicionar o arquivo .csv ao diretório `data/raw`, que é o local onde o script irá procurar o arquivo para leitura e posterior tratamentos
 
-#### Executção do projeto
+### Execução do projeto
 Primeiramente deve-se instalar as dependências utilizando o comando `pip install requirements.txt`
 Para executar o script que dará início ao tratamento dos dados, na raiz do projeto, deve-se executar no terminal o comando `python -m main` 
-
-### Tecnologias utilizadas
-- Python
-- Pandas
 
 ### Limpeza de Dados
 Para a limpeza dos dados foram efetuados os seguintes procedimentos:
@@ -188,26 +189,229 @@ Para a limpeza dos dados foram efetuados os seguintes procedimentos:
 - Padronização dos textos das colunas PR_CAT e PR_NOME pata str.title
 
 
-## Análise Exploratória doas dados da base `Base Varejo`
+## Análise Exploratória dos dados da base `Base Varejo`
 
 O foco desta análise é identificar possíveis anomalias nos dados, efetuar tratamento  e limpeza destes dados inconsistentes.
 
 A base de dados refere-se a uma relação de compras efetuadas por clientes.
+
+### Informações sobre a base de dados
+#### Dimensão
+<table>
+  <thead>
+    <tr>
+        <th>Nº</th>
+        <th>Informativo</th>
+        <th>Quantidade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>1</td>
+        <td>Linhas</td>
+        <td>830000</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Colunas</td>
+        <td>14</td>
+    </tr>
+  </tbody>
+</table>
+
+#### Tipos de dados
+<table>
+  <thead>
+    <tr>
+        <th colspan="2">TIPOS DE DADOS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>DATA</td>
+        <td>str</td>
+    </tr>
+    <tr>
+        <td>CO_ID</td>
+        <td>int64</td>
+    </tr>
+        <tr>
+        <td>CL_ID</td>
+        <td>int64</td>
+    </tr>
+        <tr>
+        <td>CL_GENERO</td>
+        <td>str</td>
+    </tr>
+        <tr>
+        <td>CL_EC</td>
+        <td>int64</td>
+    </tr>
+        <tr>
+        <td>CL_FLH</td>
+        <td>int64</td>
+    </tr>
+        <tr>
+        <td>CL_SEG</td>
+        <td>str</td>
+    </tr>
+        <tr>
+        <td>PR_ID</td>
+        <td>int64</td>
+    </tr>
+        <tr>
+        <td>PR_CAT</td>
+        <td>str</td>
+    </tr>
+        <tr>
+        <td>PR_NOME</td>
+        <td>str</td>
+    </tr>
+    <tr>
+        <td>Unnamed: 10</td>
+        <td>float64</td>
+    </tr>
+    <tr>
+        <td>Unnamed: 11</td>
+        <td>float64</td>
+    </tr>
+    <tr>
+        <td>Unnamed: 12</td>
+        <td>float64</td>
+    </tr>
+    <tr>
+        <td>Unnamed: 13</td>
+        <td>float64</td>
+    </tr>
+  </tbody>
+</table>
+
+#### Colunas totalmente vazias(lixo)
+Unnamed: 10, Unnamed: 11, Unnamed: 12 e Unnamed: 13
+
+#### Registros nulos
+<table>
+  <thead>
+    <tr>
+        <th>Tipo de dado</th>
+        <th>Qtd. Nulos</th>
+        <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>DATA</td>
+        <td>0</td>
+        <td>0.0</td>
+    </tr>
+    <tr>
+        <td>CO_ID</td>
+        <td>0</td>
+        <td>0.0</td>
+    </tr>
+        <tr>
+        <td>CL_ID</td>
+        <td>0</td>
+        <td>0.0</td>
+    </tr>
+        <tr>
+        <td>CL_GENERO</td>
+        <td>0</td>
+        <td>0.0</td>
+    </tr>
+        <tr>
+        <td>CL_EC</td>
+        <td>0</td>
+        <td>0.0</td>
+    </tr>
+        <tr>
+        <td>CL_FLH</td>
+        <td>0</td>
+        <td>0.0</td>
+    </tr>
+        <tr>
+        <td>CL_SEG</td>
+        <td>0</td>
+        <td>0.0</td>
+    </tr>
+        <tr>
+        <td>PR_ID</td>
+        <td>0</td>
+        <td>0.0</td>
+    </tr>
+        <tr>
+        <td>PR_CAT</td>
+        <td>0</td>
+        <td>0.0</td>
+    </tr>
+        <tr>
+        <td>PR_NOME</td>
+        <td>0</td>
+        <td>0.0</td>
+    </tr>
+    <tr>
+        <td>Unnamed: 10</td>
+        <td>8300000</td>
+        <td>100.00</td>
+    </tr>
+    <tr>
+        <td>Unnamed: 11</td>
+        <td>8300000</td>
+        <td>100.00</td>
+    </tr>
+    <tr>
+        <td>Unnamed: 12</td>
+        <td>8300000</td>
+        <td>100.00</td>
+    </tr>
+    <tr>
+        <td>Unnamed: 13</td>
+        <td>8300000</td>
+        <td>100.00</td>
+    </tr>
+  </tbody>
+</table>
+
+#### Duplicidades
+Foram identificadas 96.553 linhas duplicadas (11.63% da base).
+
+Considerando que a recorrência de um mesmo produto em um pedido pode indicar a compra de múltiplas unidades, esses registros foram mantidos para evitar impactos nas análises de vendas e comportamento de consumo.
 
 ### Análises Exploratórias:
 #### Filhos `CL_FHL`
 A coluna CL_FHL representa a coluna onde informa a quantidade de filhos onde cada comprador informo possuir.
 
 Tendo os seguintres números:
-- Média de 1,15 filhos por compra/cliente
-- Quantidade mínima de 0 e mácima de 4 filhos
+- Quantidade mínima de 0 e máxima de 4 filhos
+- Média de 1.15 filhos por compra/cliente
 
 #### Compras
 Analisado o quesito de por gênero `CL_GENERO`, onde a referida coluna representa a informação de gênero(M/F) informados por compra, onde obteve-se os seguintes resultados:
-- Feminino: 380735
-- Masculino: 349484
 
-Com relação às compras de gêneros X estado civil, obtivemos os seguintes resultados:
+<table>
+  <thead>
+    <tr>
+        <th>Nº</th>
+        <th>Gênero</th>
+        <th>Quantidade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>1</td>
+        <td>Feminino</td>
+        <td>432576</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Masculino</td>
+        <td>397424</td>
+    </tr>
+  </tbody>
+</table>
+
+
+Com relação de compras de gêneros X estado civil, obtivemos os seguintes resultados:
 
 <table>
   <thead>
@@ -223,66 +427,66 @@ Com relação às compras de gêneros X estado civil, obtivemos os seguintes res
         <td>1</td>
         <td>Feminino</td>
         <td>Casado ou União Estável</td>
-        <td>79298</td>
+        <td>90246</td>
     </tr>
     <tr>
         <td>2</td>
         <td>Feminino</td>
         <td>Divorciado</td>
-        <td>87869</td>
+        <td>99896</td>
     </tr>
     <tr>
         <td>3</td>
         <td>Feminino.</td>
         <td>Separado</td>
-        <td>100255</td>
+        <td>113743</td>
     </tr>
     <tr>
         <td>4</td>
         <td>Feminino</td>
         <td>Solteiro</td>
-        <td>99579</td>
+        <td>113020</td>
     </tr>
     <tr>
         <td>5</td>
         <td>Feminino</td>
         <td>Viúvo</td>
-        <td>13734</td>
+        <td>15671</td>
     </tr>
     <tr>
         <td>6</td>
         <td>Masculino</td>
         <td>Casado ou União Estável</td>
-        <td>91946</td>
+        <td>95094</td>
     </tr>
     <tr>
         <td>7</td>
         <td>Masculino</td>
         <td>Divorciado</td>
-        <td>83611</td>
+        <td>95094</td>
     </tr>
     <tr>
         <td>8</td>
         <td>Masculino</td>
         <td>Separado</td>
-        <td>87983</td>
+        <td>99999</td>
     </tr>
     <tr>
         <td>9</td>
         <td>Masculino</td>
         <td>Solteiro</td>
-        <td>78851</td>
+        <td>89598</td>
     </tr>
     <tr>
         <td>10</td>
         <td>Masculino</td>
         <td>Viúvo</td>
-        <td>7093</td>
+        <td>8106</td>
     </tr>
   </tbody>
 </table>
 
-A média de itens por copora foi de `39,54`
+A média de itens por compra foi de `44.94`
 
 #### Top 5 itens mais comprados por estado civil.
 
@@ -300,151 +504,151 @@ A média de itens por copora foi de `39,54`
       <td>1</td>
       <td>Casado ou União Estável</td>
       <td>Presunto Cozido</td>
-      <td>2938</td>
+      <td>3333</td>
     </tr>
     <tr>
       <td>2</td>
       <td>Casado ou União Estável</td>
       <td>Preservativo</td>
-      <td>1605</td>
+      <td>1817</td>
     </tr>
     <tr>
       <td>3</td>
       <td>Casado ou União Estável</td>
       <td>Cebola</td>
-      <td>1589</td>
+      <td>1807</td>
     </tr>
     <tr>
       <td>4</td>
       <td>Casado ou União Estável</td>
       <td>Sardinha</td>
-      <td>1582</td>
+      <td>1786</td>
     </tr>
     <tr>
       <td>5</td>
       <td>Casado ou União Estável</td>
       <td>Papel Higiênico</td>
-      <td>1566</td>
+      <td>1779</td>
     </tr>
     <tr>
       <td>6</td>
       <td>Divorciado</td>
       <td>Presunto Cozido</td>
-      <td>2956</td>
+      <td>3362</td>
     </tr>
     <tr>
       <td>7</td>
       <td>Divorciado</td>
-      <td>Cebola</td>
-      <td>1579</td>
+      <td>Sardinha</td>
+      <td>1797</td>
     </tr>
     <tr>
       <td>8</td>
       <td>Divorciado</td>
-      <td>Removedor</td>
-      <td>1568</td>
+      <td>Cebola</td>
+      <td>1791</td>
     </tr>
     <tr>
       <td>9</td>
       <td>Divorciado</td>
-      <td>Papel Higiênico</td>
-      <td>1567</td>
+      <td>Removedor</td>
+      <td>1784</td>
     </tr>
     <tr>
       <td>10</td>
       <td>Divorciado</td>
-      <td>Desengordurante</td>
-      <td>1559</td>
+      <td>Linguica</td>
+      <td>1779</td>
     </tr>
     <tr>
       <td>11</td>
       <td>Separado</td>
       <td>Presunto Cozido</td>
-      <td>3369</td>
+      <td>3793</td>
     </tr>
     <tr>
       <td>12</td>
       <td>Separado</td>
       <td>Modelador</td>
-      <td>1727</td>
+      <td>1968</td>
     </tr>
     <tr>
       <td>13</td>
       <td>Separado</td>
-      <td>Chupeta</td>
-      <td>1717</td>
+      <td>Leite</td>
+      <td>1952</td>
     </tr>
     <tr>
       <td>14</td>
       <td>Separado</td>
-      <td>Leite</td>
-      <td>1712</td>
+      <td>Chupeta</td>
+      <td>1938</td>
     </tr>
     <tr>
       <td>15</td>
       <td>Separado</td>
-      <td>Tira Mancha</td>
-      <td>1710</td>
+      <td>Talco</td>
+      <td>1935</td>
     </tr>
     <tr>
       <td>16</td>
       <td>Solteiro</td>
       <td>Presunto Cozido</td>
-      <td>3104</td>
+      <td>3506</td>
     </tr>
     <tr>
       <td>17</td>
       <td>Solteiro</td>
       <td>Detergente</td>
-      <td>1657</td>
+      <td>1875</td>
     </tr>
     <tr>
       <td>18</td>
       <td>Solteiro</td>
       <td>Papinha Infantil</td>
-      <td>1654</td>
+      <td>1855</td>
     </tr>
     <tr>
       <td>19</td>
       <td>Solteiro</td>
       <td>Banana</td>
-      <td>1642</td>
+      <td>1854</td>
     </tr>
     <tr>
       <td>20</td>
       <td>Solteiro</td>
-      <td>Mamão</td>
-      <td>1636</td>
+      <td>Modelador</td>
+      <td>1853</td>
     </tr>
     <tr>
       <td>21</td>
       <td>Viúvo</td>
       <td>Presunto Cozido</td>
-      <td>352</td>
+      <td>397</td>
     </tr>
     <tr>
       <td>22</td>
       <td>Viúvo</td>
       <td>Lustra Móveis</td>
-      <td>208</td>
+      <td>242</td>
     </tr>
     <tr>
       <td>23</td>
       <td>Viúvo</td>
       <td>Manga</td>
-      <td>208</td>
+      <td>238</td>
     </tr>
     <tr>
       <td>24</td>
       <td>Viúvo</td>
       <td>Rodo</td>
-      <td>205</td>
+      <td>236</td>
     </tr>
     <tr>
       <td>25</td>
       <td>Viúvo</td>
-      <td>Shampoo</td>
-      <td>205</td>
+      <td>Limao</td>
+      <td>234</td>
     </tr>
   </tbody>
 </table>
@@ -463,17 +667,17 @@ A média de itens por copora foi de `39,54`
     <tr>
       <td>1</td>
       <td>A</td>
-      <td>39.82</td>
+      <td>45.40</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>C</td>
-      <td>39.79</td>
+      <td>B</td>
+      <td>44.77</td>
     </tr>
     <tr>
       <td>3</td>
-      <td>B</td>
-      <td>39.39</td>
+      <td>C</td>
+      <td>45.19</td>
     </tr>
   </tbody>
 </table>
